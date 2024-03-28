@@ -376,7 +376,7 @@
                                                  materialDesign:HintAssist.Hint="{T:TranslateExtension LabelCaptureName}"
                                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
-                                        <TextBox Grid.Row="3" Text="{Binding Path=DefaultSession.Series}" Margin="4" VerticalAlignment="Top"
+                                        <TextBox Grid.Row="3" Text="{Binding Path=DefaultSession.Series, UpdateSourceTrigger=PropertyChanged}" Margin="4" VerticalAlignment="Top"
                                                  materialDesign:HintAssist.Hint="{T:TranslateExtension LabelSeries}"
                                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                                     </Grid>

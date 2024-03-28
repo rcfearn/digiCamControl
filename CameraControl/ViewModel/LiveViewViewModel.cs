@@ -1293,10 +1293,13 @@ namespace CameraControl.ViewModel
             CameraDevice = new NotConnectedCameraDevice();
             InitCommands();
             PreviewBitmapVisible = true;
+            AutoFocusBeforCapture = true;
         }
 
         public LiveViewViewModel(ICameraDevice device, Window window)
         {
+            AutoFocusBeforCapture = true;
+
             CameraDevice = device;
             _window = window;
             CameraProperty = device.LoadProperties();
@@ -2293,6 +2296,24 @@ namespace CameraControl.ViewModel
 
             switch (GridType)
             {
+                case 0:
+                    {
+                        int width = (int)writeableBitmap.Width;
+                        int height = (int)writeableBitmap.Height;
+
+                        int offset = (width - height) / 2;
+
+                        writeableBitmap.DrawLine(0 + offset, 0, 0 + offset, height, color);
+                        writeableBitmap.DrawLine(width - offset, 0, width - offset, height, color);
+
+                        writeableBitmap.DrawLine(width / 2, 0, width / 2, height, color);
+                        writeableBitmap.DrawLine(0, height / 2, width, height / 2, color);
+
+                        writeableBitmap.SetPixel((int)(writeableBitmap.Width / 2), (int)(writeableBitmap.Height / 2), 128,
+                            Colors.Red);
+                    }
+                    break;
+
                 case 1:
                 {
                     for (int i = 1; i < 3; i++)
