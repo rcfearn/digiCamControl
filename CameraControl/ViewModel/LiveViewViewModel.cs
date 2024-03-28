@@ -2950,7 +2950,11 @@ namespace CameraControl.ViewModel
                 }
                
                 if (AutoFocusBeforCapture)
+                {
                     AutoFocusThread();
+
+                    Thread.Sleep(1500);
+                }
 
                 if (CaptureCancelRequested)
                     break;
